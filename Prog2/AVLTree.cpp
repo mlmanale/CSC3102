@@ -41,10 +41,10 @@ using namespace std;
 template <typename E>
 AVLTree<E>::Node::Node(E s)
 {
-   data = s;
-   left = NULL;
-   right = NULL;
-   bal = EH;
+   data = s; //data in the note
+   left = NULL; //left child
+   right = NULL; //right child
+   bal = EH; //balanced factor of this node
 }
 
 /* Outer AVLTree class definitions */
@@ -179,13 +179,25 @@ int AVLTree<E>::size() const
 template <typename E>
 vector<string> AVLTree<E>::genPaths()
 {
-    //implement this function
+    /**
+    * This function generates the string representations of the 
+    * root to leaf paths in this tree
+    * @return a vector containing the string representations of the 
+    * root-to-leaf paths of this tree
+    */
+
+   //implement this function
    return vector<string>(); 
 }
 
 template <typename E>
 bool AVLTree<E>::isFibonacci() const
 {
+   /**
+    * Determines whether this tree is a Fibonacci tree
+    * @return true if this tree is a Fibonacci tree; otherwise, false
+    */
+
     //implement this function
    return false;    
 }
@@ -199,6 +211,11 @@ int AVLTree<E>::height() const
 template<typename E>
 int AVLTree<E>::fullCount() const
 {
+    /**
+    * Gives the number of full nodes in this tree
+    * @return the number of full nodes in this tree
+    */
+
     //implement this function  
     return 0;
 }
@@ -206,6 +223,12 @@ int AVLTree<E>::fullCount() const
 template <typename E>
 int AVLTree<E>::fibonacci(int n)
 {
+   /**
+     * An auxiliary function that iteratively computes a fibonacci number
+     * @param n the position of the term in the fibonacci sequence
+     * @return the nth fibonacci number or -1 if n < -1
+     */
+
    //implement this method
    return 0;
 }
@@ -590,6 +613,12 @@ typename AVLTree<E>::Node* AVLTree<E>::deleteLeftBalance(Node* node,bool& shorte
 template<typename E>
 int AVLTree<E>::height(Node* node) const
 {
+   /**
+     * Determines the height of the subtree rooted at the specified node
+     * @param node a root of the subtree
+     * @return the height of the tree rooted at the specified node
+     */
+
     //implement this function
     return 0;    
 }
@@ -597,6 +626,13 @@ int AVLTree<E>::height(Node* node) const
 template<typename E>
 int AVLTree<E>::fullCount(Node* node) const
 {
+   /**
+     * An auxiliary function that recursively counts the number of full
+     * nodes in the subtree rooted at the specified node
+     * @param node the root of a subtree
+     * @return the number of full nodes in the subtree rooted at the specified node
+     */
+
     //implement this method
     return 0;
 }
@@ -604,6 +640,15 @@ int AVLTree<E>::fullCount(Node* node) const
 template<typename E>  
 void AVLTree<E>::genPaths(Node* node, string subPath, vector<string>& paths)
 {
+    /**
+     * An auxiliary function that recursively generates the root-to-leaf 
+     * subpaths in the tree rooted at the specified node
+     * @param node the root of a subtree
+     * @param subpath a string representation of a subpath 
+     * @param paths an vector of strings representing root to leaf
+     * paths in the tree rooted at the specified node
+     */ 
+    
     //Implement this method
 }
 
