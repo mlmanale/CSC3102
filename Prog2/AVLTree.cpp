@@ -4,7 +4,7 @@
  * @author William Duncan, YOUR NAME
  * @see AVLTree
  * <pre>
- * Date: LAST DATE MODIFIED
+ * Date: 
  * CSC 3102 Programming Project # 2
  * Instructor: Dr. Duncan 
  *

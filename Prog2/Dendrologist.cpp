@@ -40,6 +40,10 @@ int main(int argc, char** argv)
         throw invalid_argument("There should be 3 command line arguments.");
     }
     //Complete the implementation of this function
+    AVLTree<string> fibTree;
+    fibTree.insert("three");
+    cout << fibTree.height();
+
        
     return 0;
 }
