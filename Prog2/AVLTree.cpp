@@ -186,8 +186,10 @@ vector<string> AVLTree<E>::genPaths()
     * root-to-leaf paths of this tree
     */
 
-   //implement this function
-   return vector<string>(); 
+   vector<string> paths;
+   genPaths(root, root->data, paths);
+
+   return paths;
 }
 
 template <typename E>
@@ -197,8 +199,8 @@ bool AVLTree<E>::isFibonacci() const
     * Determines whether this tree is a Fibonacci tree
     * @return true if this tree is a Fibonacci tree; otherwise, false
     */
-
-    //implement this function
+   // int ht = height(root);
+   // fibonacci(height()+3)-1;
    return false;    
 }
 
@@ -215,9 +217,7 @@ int AVLTree<E>::fullCount() const
     * Gives the number of full nodes in this tree
     * @return the number of full nodes in this tree
     */
-
-    //implement this function  
-    return 0;
+   return fullCount(root);
 }
 
 template <typename E>
@@ -228,9 +228,15 @@ int AVLTree<E>::fibonacci(int n)
      * @param n the position of the term in the fibonacci sequence
      * @return the nth fibonacci number or -1 if n < -1
      */
-
-   //implement this method
-   return 0;
+    if(n < 1) return -1;
+    if(n == 0 || n == 1) return 1;
+    int a = 1, b = 1;
+    for(int i = 1; i < n; ++ i){
+       int c = a + b;
+       a = b;
+       b = c;
+    }
+    return a;
 }
 
 /* END: Augmented Private Auxiliary Functions */
@@ -618,9 +624,18 @@ int AVLTree<E>::height(Node* node) const
      * @param node a root of the subtree
      * @return the height of the tree rooted at the specified node
      */
-
-    //implement this function
-    return 0;    
+      if (!node)
+        return -1;
+    else {
+        // Find the height of both subtrees
+        // and use the larger one
+        int left_height = height(node->left);
+        int right_height = height(node->right);
+        if (left_height >= right_height)
+            return left_height + 1;
+        else
+            return right_height + 1;
+    }
 }
 
 template<typename E>
@@ -633,7 +648,31 @@ int AVLTree<E>::fullCount(Node* node) const
      * @return the number of full nodes in the subtree rooted at the specified node
      */
 
-    //implement this method
+    //FIX. only generating number of nodes, not nodes w two children
+    int fc = 0;
+
+    if (node == NULL)
+         return 0;
+    else
+    {
+    bool isParent = true;
+    if(node->right == NULL || node->left == NULL){
+       isParent = false;
+       return 0;
+    }
+    if(node->right == NULL && node->left == NULL){
+       isParent = false;
+       return 0;
+    }
+   int fc = 1;
+   fc += fullCount(node->left);
+   fc += fullCount(node->right);
+   
+
+   //  fc += fullCount(node->left);
+   //  fc += fullCount(node->right);
+    return fc;
+    }
     return 0;
 }
 
@@ -648,8 +687,31 @@ void AVLTree<E>::genPaths(Node* node, string subPath, vector<string>& paths)
      * @param paths an vector of strings representing root to leaf
      * paths in the tree rooted at the specified node
      */ 
+    if (node == NULL){
+      return;
+    }
+    paths.push_back(node->data);
+  
+   Node* rNode;
+   Node* lNode;
+   
+    if(node->left == NULL){
+       return;
+    }
+    else{
+       lNode = node->left;
+       subPath = lNode->data;
+       genPaths(lNode, subPath, paths);
+    }
     
-    //Implement this method
+    if(node->right == NULL){
+       return;
+    }
+    else{
+       rNode = node->right;
+       subPath = rNode->data;
+       genPaths(rNode, subPath, paths);
+    }
 }
 
 /* END: Augmented Private Auxiliary Functions */   
